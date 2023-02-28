@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sync</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Just some notes</h1>
+    <div class="elements-container" id="elements-container">
+        
+    </div>
+    <form class="add-form">
+        <fieldset>
+            <h4>Title:</h4>
+            <input type="text" name="title" />
+            <h4>Content:</h4>
+            <textarea name="content"></textarea>
+            <button class="add">Add</button>
+        </fieldset>
+    </form>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script type="module">
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyDro8CkTUhtD6qB4AvZjawmCObNT446YVM",
+          authDomain: "test-project-49fba.firebaseapp.com",
+          databaseURL: "https://test-project-49fba-default-rtdb.europe-west1.firebasedatabase.app",
+          projectId: "test-project-49fba",
+          storageBucket: "test-project-49fba.appspot.com",
+          messagingSenderId: "606627375664",
+          appId: "1:606627375664:web:fb1a76d6cd6aea64c21bf5"
+        };
+      
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        // Initialize Cloud Firestore and get a reference to the service
+        window.db = firebase.firestore();
+    </script>
+    <script src="/js.js" type="text/javascript" />
+</body>
+</html>
