@@ -19,3 +19,7 @@ body, html {
     border-radius: 15px;
     padding: 15px;
 }
+
+.content-area {
+    height: calc(5.5rem + calc(var(--bs-border-width) * 2)) !important
+}
