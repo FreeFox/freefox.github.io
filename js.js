@@ -4,7 +4,7 @@ window.addEventListener("load", (event) => {
             if (change.type === 'added') {
                 rederDoc(change.doc.data(), change.doc.id);
             } else if (change.type === 'removed') {
-                var elem = document.querySelector(`.element[data-id="${change.doc.id}"]`);
+                var elem = document.querySelector(`.col[data-id="${change.doc.id}"]`);
                 elem.parentNode.removeChild(elem);
             }
         });
@@ -15,7 +15,7 @@ document.getElementById('elements-container').addEventListener("click", (event) 
     event.stopPropagation();
     event.preventDefault();
 
-    if (event.target.matches('.remove')) {
+    if (event.target.matches('.btn-remove')) {
         var id = event.target.dataset.id;
         db.collection("testcollection").doc(id).delete().then(() => {
             console.log("Document successfully deleted!");
@@ -40,10 +40,18 @@ document.querySelector('.add-form .add').addEventListener("click", (event) => {
 
 function rederDoc({title, content}, id){
     document.getElementById('elements-container').innerHTML += `
-        <div class="element" data-id=${id}>
-            <h3>${title}</h3>
-            <div>${content}</div>
-            <a data-id=${id} class="remove" href="#">Remove</a>
+        <div class="col" data-id=${id}>
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h3>${title}</h3>
+                <p class="card-text">${content}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button data-id=${id} type="button" class="btn btn-remove btn-sm btn-outline-secondary">Remove</button>
+                  </div>
+                </div>
+              </div>
+            </div>
         </div>
     `;
 }
